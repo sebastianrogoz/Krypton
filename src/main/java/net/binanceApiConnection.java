@@ -12,4 +12,7 @@ public class binanceApiConnection {
         this.secretKey = secretKey;
     }
 
+    private JSONObject getResponse(String url) {
+        return new JSONObject();
+    }
 }

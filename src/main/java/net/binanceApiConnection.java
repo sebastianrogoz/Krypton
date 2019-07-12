@@ -13,7 +13,6 @@ public class binanceApiConnection {
     }
 
     private JSONObject getResponse(String url) {
-         new JSONObject();
-         abcd;
+        return new JSONObject();
     }
 }

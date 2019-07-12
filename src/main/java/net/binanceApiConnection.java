@@ -1,6 +1,5 @@
 package net;
 
-import java.net.HttpURLConnection;
 import org.json.*;
 
 public class binanceApiConnection {

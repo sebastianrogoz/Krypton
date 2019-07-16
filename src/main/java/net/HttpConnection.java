@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class httpConnection {
+public class HttpConnection {
 
     public static Tuple<Integer, String> getResponseContent(String url) throws Exception {
         StringBuilder result = new StringBuilder();

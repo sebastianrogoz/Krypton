@@ -1,0 +1,5 @@
+Main.class
+DAL\DatabaseConnection.class
+utils\Tuple.class
+net\BinanceApiConnection.class
+net\HttpConnection.class

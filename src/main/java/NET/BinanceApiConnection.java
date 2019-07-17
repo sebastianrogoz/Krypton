@@ -1,4 +1,4 @@
-package net;
+package NET;
 
 import org.json.*;
 import utils.Tuple;
@@ -15,7 +15,7 @@ public class BinanceApiConnection {
         //this.secretKey = secretKey;
     }
 
-    public List<String> getSymbolsList() throws Exception{
+    public List<String> getSymbolsList(){
         String url = "https://api.binance.com/api/v1/exchangeInfo";
         Tuple<Integer, String> response = HttpConnection.getResponseContent(url);
         JSONArray jsonArr = new JSONObject(response.item2).getJSONArray("symbols");
@@ -25,5 +25,21 @@ public class BinanceApiConnection {
             symbols.add(jsonArr.getJSONObject(i).getString("symbol"));
         }
         return symbols;
+    }
+
+    public Double getSymbolPrice(String symbol) {
+        String url = "https://api.binance.com/api/v3/avgPrice?symbol=" + symbol;
+        Tuple<Integer, String> response = HttpConnection.getResponseContent(url);
+
+        try {
+            JSONObject json = new JSONObject(response.item2);
+            if(response.item1 == 200) {
+                return Double.parseDouble(json.getString("price"));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

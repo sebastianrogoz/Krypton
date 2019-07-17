@@ -1,4 +1,4 @@
-import net.BinanceApiConnection;
+import NET.BinanceApiConnection;
 import DAL.*;
 
 import java.util.List;
@@ -6,15 +6,22 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-        BinanceApiConnection exConn = new BinanceApiConnection();
+        BinanceApiConnection binanceConn1 = new BinanceApiConnection();
+        BinanceApiConnection binanceConn2 = new BinanceApiConnection();
         DatabaseConnection dbConn = DatabaseConnection.getInstance();
-        List<String> symbols = exConn.getSymbolsList();
 
-        for(String symbol : symbols) {
-            System.out.println(symbol);
-        }
 
         //https://api.binance.com/api/v3/avgPrice?symbol=USDCUSDT
+
+
+        for(int i = 0; i < 100; i++) {
+            new Thread(() -> {
+                System.out.println(binanceConn1.getSymbolPrice("BTCUSDT"));
+            }).start();
+        }
+
+
+
 
     }
 }

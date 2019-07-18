@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Currency", uniqueConstraints = {
+@Table(name = "currency", uniqueConstraints = {
         @UniqueConstraint(columnNames = "ID"),
         @UniqueConstraint(columnNames = "SYMBOL")
 })

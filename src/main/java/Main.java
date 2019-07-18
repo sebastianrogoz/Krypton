@@ -1,11 +1,11 @@
 import NET.BinanceApiConnection;
-import DAL.DatabaseConnection;
+import DAL.DatabaseConnectionOld;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
         BinanceApiConnection binanceConn = new BinanceApiConnection();
-        DatabaseConnection dbConn = DatabaseConnection.getInstance();
+        DatabaseConnectionOld dbConn = DatabaseConnectionOld.getInstance();
 
         for(int i = 0; i < 100; i++) {
             new Thread(() -> {

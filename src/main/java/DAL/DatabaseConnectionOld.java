@@ -2,25 +2,25 @@ package DAL;
 
 import java.sql.*;
 
-public class DatabaseConnection {
+public class DatabaseConnectionOld {
     private String url;
     private String user;
     private String password;
 
-    private static final DatabaseConnection instance =
-            new DatabaseConnection(
+    private static final DatabaseConnectionOld instance =
+            new DatabaseConnectionOld(
                     "jdbc:postgresql://localhost:5432/KRYPTON",
                     "postgres",
                     "sebastian1#"
             );
 
-    private DatabaseConnection(String url, String user, String password) {
+    private DatabaseConnectionOld(String url, String user, String password) {
         this.url = url;
         this.user = user;
         this.password = password;
     }
 
-    public static DatabaseConnection getInstance() {
+    public static DatabaseConnectionOld getInstance() {
         return instance;
     }
 

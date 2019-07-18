@@ -1,6 +1,7 @@
 Main.class
-NET\BinanceApiConnection.class
-DAL\DatabaseConnection.class
-DAL\dataModels\Currency.class
-NET\HttpConnection.class
 utils\Tuple.class
+DAL\dto\CurrencyEntity.class
+NET\BinanceApiConnection.class
+NET\HttpConnection.class
+DAL\DatabaseConnectionOld.class
+DAL\HibernateUtil.class

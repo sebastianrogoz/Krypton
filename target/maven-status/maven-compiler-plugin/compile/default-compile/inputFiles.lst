@@ -1,6 +1,7 @@
+C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\DatabaseConnectionOld.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\Main.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\NET\HttpConnection.java
-C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\dataModels\Currency.java
+C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\HibernateUtil.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\utils\Tuple.java
-C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\DatabaseConnection.java
+C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\dto\CurrencyEntity.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\NET\BinanceApiConnection.java

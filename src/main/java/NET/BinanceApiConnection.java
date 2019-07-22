@@ -15,7 +15,7 @@ public class BinanceApiConnection {
         //this.secretKey = secretKey;
     }
 
-    public List<String> getSymbolsList(){
+    public static List<String> getSymbolsList(){
         String url = "https://api.binance.com/api/v1/exchangeInfo";
         Tuple<Integer, String> response = HttpConnection.getResponseContent(url);
         JSONArray jsonArr = new JSONObject(response.item2).getJSONArray("symbols");
@@ -27,7 +27,7 @@ public class BinanceApiConnection {
         return symbols;
     }
 
-    public Double getSymbolPrice(String symbol) {
+    public static Double getSymbolPrice(String symbol) {
         String url = "https://api.binance.com/api/v3/avgPrice?symbol=" + symbol;
         Tuple<Integer, String> response = HttpConnection.getResponseContent(url);
 

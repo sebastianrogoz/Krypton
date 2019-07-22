@@ -1,14 +1,15 @@
 package DAL.dto;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "currency", uniqueConstraints = {
+@Table(name = "kr_exchange_rates", uniqueConstraints = {
         @UniqueConstraint(columnNames = "ID"),
         @UniqueConstraint(columnNames = "SYMBOL")
 })
-public class CurrencyEntity {
+public class ExchangeRate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
@@ -17,8 +18,8 @@ public class CurrencyEntity {
     @Column(name = "SYMBOL", unique = true, nullable = false)
     private String symbol;
 
-    @Column(name = "PRICE")
-    private double price;
+    @Column(name = "VALUE")
+    private double value;
 
     @Column(name = "PRICE_TIMESTAMP", nullable = false)
     private LocalDateTime priceTimestamp;
@@ -32,12 +33,12 @@ public class CurrencyEntity {
         this.symbol = symbol;
     }
 
-    public double getPrice() {
-        return price;
+    public double getValue() {
+        return value;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public int getId() {

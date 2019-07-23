@@ -3,7 +3,7 @@ import NET.BinanceApiConnection;
 import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         Map<String, Double> exchangeRates = BinanceApiConnection.getExchangeRates();
 
         for(Map.Entry<String, Double> entry : exchangeRates.entrySet()) {

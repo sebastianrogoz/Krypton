@@ -1,6 +1,6 @@
 package NET;
 
-import utils.HttpGetExchangeRateRunnable;
+import utils.HttpGetExchangeRateCallable;
 import org.json.*;
 import utils.Tuple;
 
@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class BinanceApiConnection {
     //private final String apiKey;
@@ -46,18 +49,26 @@ public class BinanceApiConnection {
         }
     }
 
-    public static Map<String, Double> getExchangeRates() {
+    public static Map<String, Double> getExchangeRates() throws Exception{
         List<String> symbols = BinanceApiConnection.getSymbolsList();
         Map<String, Double> exchangeRates = new HashMap<>();
         int currentIndex;
+        ExecutorService exec;
+        List<HttpGetExchangeRateCallable> tasks = new ArrayList<>();
+        List<Future<Double>> futures = new ArrayList<>();
 
         for(int i = 0; i < (symbols.size() / 20); i++) {
+            exec = Executors.newFixedThreadPool(20);
+
             for(int j = 0; j < 20; j++) {
                 currentIndex = i * 20 + j;
-                HttpGetExchangeRateRunnable runn = new HttpGetExchangeRateRunnable(symbols.get(currentIndex));
-                Thread t = new Thread(runn);
-                t.start();
+                tasks.add(new HttpGetExchangeRateCallable(symbols.get(currentIndex)));
             }
+                futures = exec.invokeAll(tasks);
+                for(Future<Double> entry : futures) {
+                }
+            symbols.
+
             System.out.println(i);
             try {
                 Thread.sleep(1000);
@@ -67,15 +78,12 @@ public class BinanceApiConnection {
 
         }
 
+        exec = Executors.newFixedThreadPool(symbols.size() % 20);
         if(symbols.size() % 20 != 0) {
             for(int i = exchangeRates.size(); i < symbols.size(); i++) {
                 currentIndex = i;
-                HttpGetExchangeRateRunnable runn = new HttpGetExchangeRateRunnable(symbols.get(currentIndex));
-                Thread t = new Thread(runn);
-                t.start();
-                synchronized (exchangeRates) {
-                    exchangeRates.put(runn.getSymbol(), runn.getPrice());
-                }
+                HttpGetExchangeRateCallable runn = new HttpGetExchangeRateCallable(symbols.get(currentIndex));
+                exec.submit(runn);
             }
         }
 

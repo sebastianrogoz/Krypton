@@ -1,18 +1,13 @@
-import DAL.Repositories.ExchangeRateRepository;
 import NET.BinanceApiConnection;
 
-import javax.management.Query;
-import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
+        Map<String, Double> exchangeRates = BinanceApiConnection.getExchangeRates();
 
-
-
-        List<String> symbols = BinanceApiConnection.getSymbolsList();
-        for(String symbol : symbols) {
-            double exchangeRateValue = BinanceApiConnection.getSymbolPrice(symbol);
-            ExchangeRateRepository.addCurrency(symbol, exchangeRateValue);
+        for(Map.Entry<String, Double> entry : exchangeRates.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 }

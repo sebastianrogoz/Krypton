@@ -1,10 +1,13 @@
 package NET;
 
+import utils.HttpGetExchangeRateRunnable;
 import org.json.*;
 import utils.Tuple;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BinanceApiConnection {
     //private final String apiKey;
@@ -41,5 +44,41 @@ public class BinanceApiConnection {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static Map<String, Double> getExchangeRates() {
+        List<String> symbols = BinanceApiConnection.getSymbolsList();
+        Map<String, Double> exchangeRates = new HashMap<>();
+        int currentIndex;
+
+        for(int i = 0; i < (symbols.size() / 20); i++) {
+            for(int j = 0; j < 20; j++) {
+                currentIndex = i * 20 + j;
+                HttpGetExchangeRateRunnable runn = new HttpGetExchangeRateRunnable(symbols.get(currentIndex));
+                Thread t = new Thread(runn);
+                t.start();
+            }
+            System.out.println(i);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if(symbols.size() % 20 != 0) {
+            for(int i = exchangeRates.size(); i < symbols.size(); i++) {
+                currentIndex = i;
+                HttpGetExchangeRateRunnable runn = new HttpGetExchangeRateRunnable(symbols.get(currentIndex));
+                Thread t = new Thread(runn);
+                t.start();
+                synchronized (exchangeRates) {
+                    exchangeRates.put(runn.getSymbol(), runn.getPrice());
+                }
+            }
+        }
+
+        return exchangeRates;
     }
 }

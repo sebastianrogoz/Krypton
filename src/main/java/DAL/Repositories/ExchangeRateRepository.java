@@ -4,7 +4,6 @@ import DAL.HibernateUtil;
 import DAL.dto.ExchangeRate;
 import org.hibernate.Session;
 import org.hibernate.query.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -49,6 +48,18 @@ public class ExchangeRateRepository {
             session.getTransaction().commit();
             session.close();
 
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void truncateExchangeRates() {
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.getTransaction().begin();
+            session.createNativeQuery("truncate table kr_exchange_rates").executeUpdate();
+            session.getTransaction().commit();
+            session.close();
         } catch(Exception e) {
             e.printStackTrace();
         }

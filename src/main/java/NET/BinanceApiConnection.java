@@ -1,5 +1,6 @@
 package NET;
 
+import javafx.concurrent.Task;
 import utils.HttpGetExchangeRateCallable;
 import org.json.*;
 import utils.Tuple;
@@ -8,13 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class BinanceApiConnection {
-    //private final String apiKey;
-    //private final String secretKey;
 
     public BinanceApiConnection(/*String apiKey, String secretKey*/) {
         //this.apiKey = apiKey;
@@ -49,44 +46,18 @@ public class BinanceApiConnection {
         }
     }
 
-    public static Map<String, Double> getExchangeRates() throws Exception{
-        List<String> symbols = BinanceApiConnection.getSymbolsList();
-        Map<String, Double> exchangeRates = new HashMap<>();
-        int currentIndex;
-        ExecutorService exec;
-        List<HttpGetExchangeRateCallable> tasks = new ArrayList<>();
-        List<Future<Double>> futures = new ArrayList<>();
+    public static Map<String, Double> getAllExchangeRates() throws Exception{
+        return null;
+    }
 
-        for(int i = 0; i < (symbols.size() / 20); i++) {
-            exec = Executors.newFixedThreadPool(20);
+    private static Map<String, Double> performMultithreadedPriceRequests(List<String> exchangeRateSymbols, int numberOfThreads) {
+        List<Callable<Double>> taskList = new ArrayList<>();
+        List<Future<Double>> responseList = new ArrayList<>();
 
-            for(int j = 0; j < 20; j++) {
-                currentIndex = i * 20 + j;
-                tasks.add(new HttpGetExchangeRateCallable(symbols.get(currentIndex)));
-            }
-                futures = exec.invokeAll(tasks);
-                for(Future<Double> entry : futures) {
-                }
-            symbols.
+        Executor exec = Executors.newFixedThreadPool(numberOfThreads);
 
-            System.out.println(i);
-            try {
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
 
-        }
 
-        exec = Executors.newFixedThreadPool(symbols.size() % 20);
-        if(symbols.size() % 20 != 0) {
-            for(int i = exchangeRates.size(); i < symbols.size(); i++) {
-                currentIndex = i;
-                HttpGetExchangeRateCallable runn = new HttpGetExchangeRateCallable(symbols.get(currentIndex));
-                exec.submit(runn);
-            }
-        }
-
-        return exchangeRates;
+        return null;
     }
 }

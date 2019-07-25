@@ -3,17 +3,15 @@ package NET;
 import javafx.concurrent.Task;
 import utils.HttpGetExchangeRateCallable;
 import org.json.*;
+import utils.ListCutter;
 import utils.Tuple;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.*;
 
 public class BinanceApiConnection {
 
-    public BinanceApiConnection(/*String apiKey, String secretKey*/) {
+    public BinanceApiConnection() {
         //this.apiKey = apiKey;
         //this.secretKey = secretKey;
     }
@@ -50,14 +48,34 @@ public class BinanceApiConnection {
         return null;
     }
 
-    private static Map<String, Double> performMultithreadedPriceRequests(List<String> exchangeRateSymbols, int numberOfThreads) {
-        List<Callable<Double>> taskList = new ArrayList<>();
-        List<Future<Double>> responseList = new ArrayList<>();
+    public static Map<String, Double> performMultithreadedPriceRequests(List<String> exchangeRateSymbols, int numberOfThreads) throws Exception{
+        Map<String, Double> exchangeRates = new HashMap<>();
+        ExecutorService exec = Executors.newFixedThreadPool(numberOfThreads);
 
-        Executor exec = Executors.newFixedThreadPool(numberOfThreads);
+        for(List<String> exchangeRateSymbolsSubList : ListCutter.cut(exchangeRateSymbols, numberOfThreads)) {
+            List<Callable<Double>> taskList = new ArrayList<>();
+            for(String symbol : exchangeRateSymbolsSubList) {
+                taskList.add(new HttpGetExchangeRateCallable(symbol));
+            }
+            List<Future<Double>> futureResponses = exec.invokeAll(taskList);
+            List<Double> responses = new ArrayList<>();
+            for(Future future : futureResponses) {
+                responses.add((Double) future.get());
+            }
 
+            Iterator i1 = exchangeRateSymbolsSubList.iterator();
+            Iterator i2 = responses.iterator();
+            String key;
+            Double value;
 
-
-        return null;
+            while(i1.hasNext() && i2.hasNext()) {
+                key = (String)i1.next();
+                value = (double)i2.next();
+                exchangeRates.put(key,value);
+                System.out.println(key + " " + value);
+            }
+        }
+        exec.shutdown();
+        return exchangeRates;
     }
 }

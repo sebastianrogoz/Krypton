@@ -1,9 +1,9 @@
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\dto\ExchangeRate.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\utils\HttpGetExchangeRateCallable.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\Main.java
-C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\NET\HttpConnection.java
+C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\net\BinanceApiConnection.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\HibernateUtil.java
+C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\net\HttpConnection.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\utils\ListCutter.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\utils\Tuple.java
 C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\DAL\Repositories\ExchangeRateRepository.java
-C:\Users\PC\Documents\IdeaProjects\Krypton\src\main\java\NET\BinanceApiConnection.java

@@ -69,20 +69,14 @@ public class ExchangeRateRepository {
     }
 
     public static void updateExchangeRates() throws Exception{
-        truncateExchangeRates();
-
-        long time1 = System.nanoTime();
 
         List<String> symbols = BinanceApiConnection.getSymbolsList();
         Map<String, Double> exchangeRates = BinanceApiConnection.performMultithreadedPriceRequests(symbols, 20);
 
+        truncateExchangeRates();
         for(Map.Entry<String, Double> entry : exchangeRates.entrySet()) {
             addCurrency(entry.getKey(), entry.getValue());
         }
 
-        long time2 = System.nanoTime();
-
-
-        System.out.println("\nExchange rates update complete.\nTime elapsed: " + (double)(time2 - time1) / 1000000000 + " seconds.");
     }
 }

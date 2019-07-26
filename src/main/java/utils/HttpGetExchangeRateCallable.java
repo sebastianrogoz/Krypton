@@ -1,6 +1,6 @@
 package utils;
 
-import NET.BinanceApiConnection;
+import DAL.net.BinanceApiConnection;
 
 import java.util.concurrent.Callable;
 

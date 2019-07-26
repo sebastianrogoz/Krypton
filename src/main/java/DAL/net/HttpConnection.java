@@ -1,4 +1,4 @@
-package NET;
+package DAL.net;
 
 import utils.Tuple;
 

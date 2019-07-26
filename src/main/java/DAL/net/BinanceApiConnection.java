@@ -1,6 +1,5 @@
-package NET;
+package DAL.net;
 
-import javafx.concurrent.Task;
 import utils.HttpGetExchangeRateCallable;
 import org.json.*;
 import utils.ListCutter;

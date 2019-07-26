@@ -2,10 +2,13 @@ package DAL.Repositories;
 
 import DAL.HibernateUtil;
 import DAL.dto.ExchangeRate;
+import DAL.net.BinanceApiConnection;
 import org.hibernate.Session;
 import org.hibernate.query.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class ExchangeRateRepository {
 
@@ -53,7 +56,7 @@ public class ExchangeRateRepository {
         }
     }
 
-    public static void truncateExchangeRates() {
+    private static void truncateExchangeRates() {
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.getTransaction().begin();
@@ -63,5 +66,23 @@ public class ExchangeRateRepository {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void updateExchangeRates() throws Exception{
+        truncateExchangeRates();
+
+        long time1 = System.nanoTime();
+
+        List<String> symbols = BinanceApiConnection.getSymbolsList();
+        Map<String, Double> exchangeRates = BinanceApiConnection.performMultithreadedPriceRequests(symbols, 20);
+
+        for(Map.Entry<String, Double> entry : exchangeRates.entrySet()) {
+            addCurrency(entry.getKey(), entry.getValue());
+        }
+
+        long time2 = System.nanoTime();
+
+
+        System.out.println("\nExchange rates update complete.\nTime elapsed: " + (double)(time2 - time1) / 1000000000 + " seconds.");
     }
 }

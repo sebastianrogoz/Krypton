@@ -6,18 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e68d655-1abd-40d4-b4c7-5f67e1b1e8a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_12_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Krypton.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Krypton.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAL/Repositories/ExchangeRateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAL/Repositories/ExchangeRateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Krypton.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/DAL/Repositories/ExchangeRateRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="380">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getCurrencyBySymbol#0;class#ExchangeRateRepository#0" />
@@ -240,7 +229,7 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49799198" visible="true" weight="0.27261615" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49799198" visible="true" weight="0.27261615" />
       <window_info id="Structure" order="1" sideWeight="0.502008" side_tool="true" weight="0.3030086" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -249,12 +238,12 @@
       <window_info id="Favorites" order="6" sideWeight="0.502008" side_tool="true" weight="0.3030086" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32839838" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3281075" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3281075" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39973083" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32974428" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.22732362" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.22732362" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32922733" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="10" visible="true" weight="0.32974428" />
@@ -391,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/DAL/Repositories/ExchangeRateRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state relative-caret-position="380">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getCurrencyBySymbol#0;class#ExchangeRateRepository#0" />

@@ -1,9 +1,0 @@
-Main.class
-DAL\Repositories\ExchangeRateRepository.class
-utils\ListCutter.class
-utils\Tuple.class
-DAL\net\HttpConnection.class
-DAL\dto\ExchangeRate.class
-DAL\net\BinanceApiConnection.class
-DAL\HibernateUtil.class
-utils\HttpGetExchangeRateCallable.class
